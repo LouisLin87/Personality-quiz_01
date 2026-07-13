@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="無聊創個心理類型傾向評估，透過 40 題探索 E/I、S/N、T/F、J/P 四組偏好。" />
+  <title>心理類型傾向評估</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <!-- 封面 -->
+    <section id="coverScreen" class="screen active" aria-labelledby="coverTitle">
+      <div class="panel cover-panel">
+        <div class="brand-mark" aria-hidden="true">◇</div>
+        <p class="eyebrow">PERSONALITY PREFERENCE ASSESSMENT</p>
+        <h1 id="coverTitle">心理類型傾向評估</h1>
+        <p class="lead">
+          透過 40 項陳述，探索你在能量取向、資訊接收、決策方式與生活方式上的相對偏好。
+        </p>
+
+        <div class="feature-grid" aria-label="測驗資訊">
+          <article>
+            <strong>40</strong>
+            <span>項評估題目</span>
+          </article>
+          <article>
+            <strong>4</strong>
+            <span>組人格維度</span>
+          </article>
+          <article>
+            <strong>16</strong>
+            <span>種結果類型</span>
+          </article>
+        </div>
+
+        <div class="notice">
+          <p>
+            請依據長期且較穩定的傾向作答，而非理想中的自己或單一特殊情境。
+            每次開始測驗時，題目順序都會重新排列。
+          </p>
+        </div>
+
+        <button id="startBtn" class="primary-btn" type="button">
+          開始評估
+        </button>
+
+        <p class="disclaimer">
+          本測驗為獨立設計的自我探索工具，不是官方 MBTI® assessment，
+          亦不構成臨床心理衡鑑或醫療診斷。
+        </p>
+      </div>
+    </section>
+
+    <!-- 作答頁 -->
+    <section id="quizScreen" class="screen" aria-labelledby="questionText">
+      <div class="panel quiz-panel">
+        <header class="quiz-header">
+          <div>
+            <p class="eyebrow">PSYCHOLOGICAL TYPE</p>
+            <h2>心理類型傾向評估</h2>
+          </div>
+          <button id="quitBtn" class="text-btn" type="button">重新開始</button>
+        </header>
+
+        <div class="progress-meta">
+          <span id="progressText">第 1 題，共 40 題</span>
+          <span id="answeredText">已完成 0 題</span>
+        </div>
+
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="40"
+          aria-valuenow="0"
+          aria-label="作答進度"
+        >
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+
+        <div class="question-card">
+          <p id="questionNumber" class="question-number">01</p>
+          <h2 id="questionText" tabindex="-1"></h2>
+          <p class="question-hint">請選擇最接近你長期狀態的答案。</p>
+
+          <div class="answer-grid" role="group" aria-label="作答選項">
+            <button class="answer-btn" type="button" data-answer="agree">
+              <span class="answer-key">1</span>
+              <span>
+                <strong>符合</strong>
+                <small>此敘述通常符合我的狀態</small>
+              </span>
+            </button>
+
+            <button class="answer-btn" type="button" data-answer="neutral">
+              <span class="answer-key">2</span>
+              <span>
+                <strong>部分符合</strong>
+                <small>視情境而定，或僅部分符合</small>
+              </span>
+            </button>
+
+            <button class="answer-btn" type="button" data-answer="disagree">
+              <span class="answer-key">3</span>
+              <span>
+                <strong>不符合</strong>
+                <small>此敘述通常不符合我的狀態</small>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <footer class="quiz-footer">
+          <button id="prevBtn" class="secondary-btn" type="button">上一題</button>
+          <button id="nextBtn" class="primary-btn compact" type="button" disabled>
+            下一題
+          </button>
+        </footer>
+      </div>
+    </section>
+
+    <!-- 結果頁 -->
+    <section id="resultScreen" class="screen" aria-labelledby="resultType">
+      <div class="panel result-panel">
+        <p class="eyebrow">YOUR PERSONALITY PREFERENCE</p>
+        <p class="result-label">本次評估結果</p>
+        <h1 id="resultType" class="result-type">INFJ</h1>
+        <h2 id="resultName" class="result-name">深層洞察者</h2>
+        <p id="resultSummary" class="result-summary"></p>
+
+        <div id="dimensionResults" class="dimension-results"></div>
+
+        <div class="result-note">
+          <h3>如何理解這項結果</h3>
+          <p>
+            結果代表你在本次作答中較明顯的相對偏好，而非不可改變的固定標籤。
+            當兩側比例接近時，表示你可能會依情境靈活運用不同方式。
+          </p>
+        </div>
+
+        <div class="result-actions">
+          <button id="copyBtn" class="secondary-btn" type="button">複製結果</button>
+          <button id="restartBtn" class="primary-btn compact" type="button">
+            重新測驗
+          </button>
+        </div>
+
+        <p id="copyStatus" class="copy-status" aria-live="polite"></p>
+        <p class="disclaimer">
+          本結果僅供自我探索與娛樂參考，不應作為醫療、招募或重大決策的唯一依據。
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
